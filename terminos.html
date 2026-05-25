@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — Kleiin MW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --blue-mid: #1e6fa8;
+      --cyan: #38bdf8;
+      --cyan-light: #7dd3fc;
+      --white: #e8f4ff;
+      --gray: #8badc8;
+      --glow: 0 0 24px rgba(56,189,248,0.35);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(13,27,42,0.90);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(56,189,248,0.12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(56,189,248,0.4);
+    }
+
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    .nav-back {
+      background: transparent;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      color: var(--cyan);
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .nav-back:hover {
+      background: var(--cyan);
+      color: var(--navy);
+      box-shadow: var(--glow);
+    }
+
+    /* ── HERO BANNER ── */
+    .terms-hero {
+      position: relative;
+      z-index: 1;
+      padding: 140px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid rgba(56,189,248,0.08);
+    }
+
+    .terms-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(circle, rgba(30,111,168,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .terms-badge {
+      display: inline-block;
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.25);
+      color: var(--cyan);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .terms-hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--white) 40%, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .terms-hero p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── CONTENT ── */
+    .terms-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+
+    .terms-section {
+      margin-bottom: 48px;
+      padding: 36px;
+      background: rgba(17,34,64,0.5);
+      border: 1px solid rgba(56,189,248,0.10);
+      border-radius: 12px;
+      transition: border-color 0.3s;
+    }
+
+    .terms-section:hover {
+      border-color: rgba(56,189,248,0.25);
+    }
+
+    .terms-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .terms-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .terms-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .terms-section p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .terms-section p:last-child { margin-bottom: 0; }
+
+    .terms-section ul {
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    .terms-section ul li {
+      color: var(--gray);
+      font-size: 0.93rem;
+      line-height: 1.8;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .terms-section ul li::before {
+      content: '▸';
+      color: var(--cyan);
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+    }
+
+    .terms-section strong { color: var(--cyan-light); }
+
+    .highlight-box {
+      background: rgba(56,189,248,0.06);
+      border-left: 3px solid var(--cyan);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      color: var(--cyan-light) !important;
+      font-size: 0.9rem !important;
+      margin: 0 !important;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 40px;
+      border-top: 1px solid rgba(56,189,248,0.08);
+      color: var(--gray);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    footer strong { color: var(--cyan); font-family: 'Orbitron', sans-serif; }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    footer a:hover { opacity: 0.7; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .terms-hero { padding: 120px 20px 48px; }
+      .terms-content { padding: 40px 16px 80px; }
+      .terms-section { padding: 24px 20px; }
+      .terms-section h2 { font-size: 0.9rem; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.jpg" alt="Kleiin MW" />
+      <span>KLEIIN MW</span>
+    </a>
+    <a href="index.html" class="nav-back">← Volver</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="terms-hero">
+    <div class="terms-badge">Documento Legal</div>
+    <h1>Términos y Condiciones</h1>
+    <p>Última actualización: Mayo 2025 &nbsp;·&nbsp; Kleiin MW — Corrientes Capital, Argentina</p>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="terms-content">
+
+    <!-- INTRO -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">INTRO</span>
+        <h2>Acuerdo General</h2>
+      </div>
+      <p>Al contratar cualquier servicio ofrecido por <strong>Kleiin MW — Cybersecurity & Web Development</strong>, el cliente acepta de forma expresa los presentes Términos y Condiciones. Estos términos regulan la relación entre Kleiin MW y el cliente durante la prestación de servicios digitales.</p>
+      <p>Si no está de acuerdo con alguno de los puntos aquí descritos, le solicitamos que se abstenga de contratar nuestros servicios y nos contacte para resolver cualquier duda antes de iniciar.</p>
+    </div>
+
+    <!-- 01 CONFIDENCIALIDAD -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">01</span>
+        <h2>Confidencialidad y No Divulgación</h2>
+      </div>
+      <p><strong>Kleiin MW</strong> se compromete a mantener absoluta confidencialidad sobre toda la información proporcionada por el cliente durante la prestación de los servicios. Esto incluye pero no se limita a:</p>
+      <ul>
+        <li>Datos personales del cliente y/o su empresa</li>
+        <li>Información comercial, estratégica o financiera</li>
+        <li>Credenciales de acceso a plataformas o servicios</li>
+        <li>Contenido, imágenes y materiales aportados para el desarrollo</li>
+        <li>Cualquier información marcada como confidencial por el cliente</li>
+      </ul>
+      <div class="highlight-box">
+        <p>🔒 Kleiin MW nunca venderá, cederá ni compartirá la información del cliente con terceros bajo ninguna circunstancia.</p>
+      </div>
+      <p>Esta obligación de confidencialidad se mantiene vigente incluso una vez finalizada la relación contractual entre las partes.</p>
+    </div>
+
+    <!-- 02 SERVICIOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">02</span>
+        <h2>Descripción y Alcance de los Servicios</h2>
+      </div>
+      <p>Kleiin MW ofrece actualmente los siguientes servicios:</p>
+      <ul>
+        <li><strong>Landing Pages Profesionales:</strong> diseño, desarrollo y publicación de páginas web vitrina para comercios y negocios. El servicio incluye una página de una sola sección con diseño personalizado, botón de contacto por WhatsApp y publicación en GitHub Pages.</li>
+        <li><strong>Instalación de Aplicaciones en Smart TV:</strong> instalación de aplicaciones de entretenimiento en dispositivos Android TV o TV Box. El servicio incluye la instalación y una verificación de funcionamiento básica.</li>
+      </ul>
+      <p>Cualquier funcionalidad adicional fuera de lo acordado deberá ser negociada y presupuestada por separado antes de su ejecución.</p>
+    </div>
+
+    <!-- 03 PAGOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">03</span>
+        <h2>Condiciones de Pago</h2>
+      </div>
+      <p>El cliente y Kleiin MW acordarán el precio del servicio de forma previa e individual por medio de WhatsApp u otro canal de comunicación establecido.</p>
+      <ul>
+        <li>El pago podrá realizarse de forma total o parcial según lo acordado previamente</li>
+        <li>En caso de pago parcial, se podrá requerir un adelanto antes de iniciar el trabajo</li>
+        <li>Los precios están sujetos a modificación sin previo aviso para nuevos contratos</li>
+        <li>No se realizarán devoluciones una vez iniciado el desarrollo del servicio</li>
+      </ul>
+      <div class="highlight-box">
+        <p>⚠️ El incumplimiento de pago da derecho a Kleiin MW a suspender o dar de baja el servicio prestado.</p>
+      </div>
+    </div>
+
+    <!-- 04 PROPIEDAD INTELECTUAL -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">04</span>
+        <h2>Propiedad Intelectual</h2>
+      </div>
+      <p>Una vez completado el pago acordado, el cliente obtiene los derechos de uso del producto entregado (sitio web, diseño, etc.).</p>
+      <ul>
+        <li>El código, diseño y desarrollo realizado por Kleiin MW es de autoría propia</li>
+        <li>Kleiin MW se reserva el derecho de mostrar el trabajo como parte de su portafolio, salvo que el cliente lo solicite expresamente por escrito</li>
+        <li>El cliente es responsable de que los materiales que provea (logos, imágenes, textos) no infrinjan derechos de terceros</li>
+      </ul>
+    </div>
+
+    <!-- 05 RESPONSABILIDADES -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">05</span>
+        <h2>Limitación de Responsabilidad</h2>
+      </div>
+      <p>Kleiin MW no se hace responsable por:</p>
+      <ul>
+        <li>Caídas o interrupciones de plataformas de terceros (GitHub Pages, WhatsApp, etc.)</li>
+        <li>Pérdida de datos ocasionada por causas ajenas a nuestra intervención</li>
+        <li>Daños indirectos o consecuentes derivados del uso del servicio</li>
+        <li>Resultados comerciales específicos derivados del uso de los servicios contratados</li>
+      </ul>
+      <p>Nuestra responsabilidad máxima se limita al monto abonado por el servicio específico contratado.</p>
+    </div>
+
+    <!-- 06 PRIVACIDAD DE DATOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">06</span>
+        <h2>Privacidad y Protección de Datos</h2>
+      </div>
+      <p>Kleiin MW recopila únicamente los datos necesarios para la prestación del servicio contratado (nombre, número de contacto, información del negocio).</p>
+      <ul>
+        <li>Los datos no serán utilizados con fines publicitarios sin consentimiento expreso</li>
+        <li>El cliente puede solicitar la eliminación de sus datos en cualquier momento</li>
+        <li>La comunicación entre Kleiin MW y el cliente se realiza principalmente por WhatsApp, sujeto a los términos de dicha plataforma</li>
+      </ul>
+    </div>
+
+    <!-- 07 MODIFICACIONES -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">07</span>
+        <h2>Modificaciones a los Términos</h2>
+      </div>
+      <p>Kleiin MW se reserva el derecho de modificar los presentes Términos y Condiciones en cualquier momento. Los cambios serán publicados en esta misma página con la fecha de actualización correspondiente.</p>
+      <p>El uso continuado de nuestros servicios tras la publicación de los cambios implica la aceptación de los nuevos términos.</p>
+    </div>
+
+    <!-- 08 JURISDICCION -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">08</span>
+        <h2>Jurisdicción y Ley Aplicable</h2>
+      </div>
+      <p>Los presentes Términos y Condiciones se rigen por las leyes de la <strong>República Argentina</strong>. Ante cualquier controversia, las partes acuerdan someterse a la jurisdicción de los tribunales competentes de la ciudad de <strong>Corrientes Capital, Provincia de Corrientes</strong>.</p>
+      <div class="highlight-box">
+        <p>📍 Ante cualquier consulta sobre estos términos, podés contactarnos directamente por WhatsApp al +54 3794082942.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>KLEIIN MW</strong> · Cybersecurity & Web Development · Corrientes Capital &nbsp;|&nbsp; <a href="index.html">Volver al inicio</a></p>
+  </footer>
+
+</body>
+</html>
