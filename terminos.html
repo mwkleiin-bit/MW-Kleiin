@@ -261,14 +261,35 @@
 
     footer a:hover { opacity: 0.7; }
 
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
+      html, body { overflow-x: hidden; width: 100%; }
+
       nav { padding: 14px 20px; }
-      .terms-hero { padding: 120px 20px 48px; }
-      .terms-content { padding: 40px 16px 80px; }
-      .terms-section { padding: 24px 20px; }
-      .terms-section h2 { font-size: 0.9rem; }
-      footer { padding: 24px 20px; }
+      .nav-logo span { font-size: 0.85rem; letter-spacing: 1px; }
+
+      .terms-hero { padding: 110px 20px 40px; }
+      .terms-hero h1 { font-size: clamp(1.4rem, 7vw, 2rem); }
+      .terms-hero p { font-size: 0.78rem; }
+
+      .terms-content { padding: 32px 16px 80px; }
+
+      .terms-section {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+      }
+
+      .terms-section-header { gap: 10px; margin-bottom: 14px; }
+      .terms-number { font-size: 0.65rem; padding: 3px 8px; }
+      .terms-section h2 { font-size: 0.85rem; }
+      .terms-section p { font-size: 0.88rem; line-height: 1.75; }
+      .terms-section ul li { font-size: 0.86rem; }
+
+      .highlight-box { padding: 12px 14px; }
+      .highlight-box p { font-size: 0.84rem !important; }
+
+      footer { padding: 24px 16px; font-size: 0.75rem; }
     }
   </style>
 </head>
