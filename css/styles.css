@@ -388,9 +388,6 @@ section {
 #marketing {
   position: relative;
   z-index: 1;
-  padding: 100px 40px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .marketing-grid {
@@ -1006,10 +1003,36 @@ footer a:hover { opacity: 0.7; }
   #marketing { padding: 60px 20px; }
   #maquetas { padding: 60px 20px; }
 
-  .marketing-grid { grid-template-columns: 1fr; gap: 40px; }
-  .marketing-img-wrap img { height: 280px; }
-  .marketing-img-placeholder { height: 280px; }
-  .marketing-badge-float { top: -12px; right: 10px; }
+  .marketing-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .marketing-text h2 { font-size: 1.3rem; }
+
+  .marketing-pills {
+    gap: 8px;
+    margin: 16px 0 24px;
+  }
+
+  .marketing-pill { font-size: 0.72rem; padding: 5px 10px; }
+
+  .marketing-cta { width: 100%; justify-content: center; font-size: 0.7rem; }
+
+  .marketing-img-wrap img { height: 260px; }
+  .marketing-img-placeholder { height: 260px; }
+
+  .marketing-badge-float {
+    top: -12px;
+    right: 10px;
+    font-size: 0.58rem;
+    padding: 8px 10px;
+  }
+
+  .marketing-overlay { padding: 10px 12px; gap: 10px; }
+  .marketing-overlay-icon { font-size: 1.3rem; }
+  .marketing-overlay-text strong { font-size: 0.68rem; }
+  .marketing-overlay-text span { font-size: 0.7rem; }
 
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
