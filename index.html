@@ -99,16 +99,19 @@
     /* Maqueta simulada (sin iframe) */
     .mock-site {
       width: 100%;
-      height: 100%;
+      height: 200%;
       overflow: hidden;
       font-family: sans-serif;
       font-size: 8px;
-      animation: scrollSite 7s ease-in-out infinite alternate;
+      animation: scrollSite 10s linear infinite;
     }
 
     @keyframes scrollSite {
       0%   { transform: translateY(0); }
-      100% { transform: translateY(-55%); }
+      40%  { transform: translateY(-45%); }
+      50%  { transform: translateY(-45%); }
+      60%  { transform: translateY(0); }
+      100% { transform: translateY(0); }
     }
 
     /* === RESTAURANTE === */
@@ -418,50 +421,6 @@
         </div>
       </div>
 
-      <!-- MAQUETA 3: PORTAFOLIO REAL -->
-      <div class="phone-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="mock-site mock-portfolio">
-              <div class="m-nav">
-                <div class="m-nav-logo">KLEIIN MW</div>
-                <div style="color:#38bdf8;font-size:6px;">Portafolio</div>
-              </div>
-              <div class="m-hero">
-                <div class="m-avatar">👨‍💻</div>
-                <div class="m-name">Kleiin MW</div>
-                <div class="m-role">WEB DEVELOPER · CORRIENTES</div>
-                <div class="m-tags">
-                  <span class="m-tag">HTML</span>
-                  <span class="m-tag">CSS</span>
-                  <span class="m-tag">JavaScript</span>
-                  <span class="m-tag">GitHub</span>
-                </div>
-              </div>
-              <div class="m-projects">
-                <div class="m-proj-title">// PROYECTOS</div>
-                <div class="m-proj-card">
-                  <div class="m-proj-name">🌐 Kleiin MW — Web Empresa</div>
-                  <div class="m-proj-desc">Landing page corporativa con intro Matrix, animaciones y contacto WhatsApp</div>
-                </div>
-                <div class="m-proj-card">
-                  <div class="m-proj-name">📺 Kleiin MW — Smart TV</div>
-                  <div class="m-proj-desc">Página de servicio de instalación de entretenimiento para Android TV</div>
-                </div>
-                <div class="m-proj-card">
-                  <div class="m-proj-name">🍽️ Landing Restaurante</div>
-                  <div class="m-proj-desc">Menú digital con WhatsApp directo para comercio gastronómico</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mockup-info">
-          <div class="mockup-label">Portafolio Real</div>
-          <div class="mockup-desc">Nuestro trabajo publicado y en producción</div>
-          <span class="mockup-tag real">✓ Proyecto real</span>
-        </div>
-      </div>
 
     </div>
 
