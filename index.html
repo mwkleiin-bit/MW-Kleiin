@@ -269,6 +269,292 @@
       .mockups-grid { grid-template-columns: 1fr; gap: 48px; }
       .phone-mockup { align-items: center; }
     }
+
+    /* ── MAQUETA TU NEGOCIO ── */
+    .mock-tunegocio {
+      background: #0a0a1a;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 8px;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .tn-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(255,180,0,0.08) 0%, transparent 50%);
+      animation: tnBgPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes tnBgPulse {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    .tn-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 100%;
+      padding: 6px 0 8px;
+      border-bottom: 1px solid rgba(56,189,248,0.15);
+    }
+
+    .tn-icon-wrap {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(255,180,0,0.1));
+      border: 1.5px solid rgba(56,189,248,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 5px;
+      font-size: 18px;
+    }
+
+    .tn-name {
+      font-size: 11px;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 2px;
+    }
+
+    .tn-sub {
+      font-size: 6px;
+      color: #8badc8;
+      letter-spacing: 1px;
+      margin-top: 2px;
+      transition: opacity 0.4s;
+    }
+
+    .tn-slides {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 160px;
+    }
+
+    .tn-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.5s, transform 0.5s;
+      background: rgba(17,34,64,0.6);
+      border: 1px solid rgba(56,189,248,0.12);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tn-slide.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .tn-slide-emoji { font-size: 26px; }
+
+    .tn-slide-title {
+      font-size: 10px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .tn-slide-rows { width: 100%; }
+
+    .tn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7px;
+      color: #8badc8;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(56,189,248,0.07);
+    }
+
+    .tn-check {
+      color: #25d460;
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .tn-dots {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 5px;
+    }
+
+    .tn-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(56,189,248,0.25);
+      transition: background 0.4s;
+    }
+
+    .tn-dot.active { background: #38bdf8; }
+
+    .tn-cta {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      background: linear-gradient(135deg, #1a8a3a, #25d460);
+      color: #fff;
+      font-size: 7px;
+      font-weight: bold;
+      padding: 7px;
+      border-radius: 6px;
+      text-align: center;
+      animation: tnCtaPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes tnCtaPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(37,212,96,0.4); }
+      50%      { box-shadow: 0 0 0 5px rgba(37,212,96,0); }
+    }
+
+
+    /* ── CARRUSEL ── */
+    .carousel-wrap {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: grab;
+      user-select: none;
+    }
+
+    .carousel-track.dragging { cursor: grabbing; transition: none; }
+
+    .carousel-card {
+      min-width: 260px;
+      background: rgba(17,34,64,0.7);
+      border: 1px solid rgba(56,189,248,0.15);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+    }
+
+    .carousel-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.45);
+    }
+
+    .carousel-img-wrap {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(13,27,42,0.8);
+    }
+
+    .carousel-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .carousel-card:hover .carousel-img-wrap img { transform: scale(1.04); }
+
+    /* Placeholder cuando no hay imagen */
+    .carousel-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      background: linear-gradient(135deg, rgba(17,34,64,0.9), rgba(13,27,42,0.95));
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    .carousel-img-wrap:not(.no-img) .carousel-placeholder { opacity: 0; pointer-events: none; }
+    .carousel-img-wrap.no-img img { display: none; }
+
+    .carousel-info {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .carousel-rubro {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .carousel-desc {
+      font-size: 0.76rem;
+      color: #e0eaf4;
+    }
+
+    /* Controles */
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .carousel-btn {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(56,189,248,0.35);
+      background: transparent;
+      color: #38bdf8;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(56,189,248,0.1);
+      border-color: #38bdf8;
+      box-shadow: 0 0 16px rgba(56,189,248,0.25);
+    }
+
+    .carousel-dots { display: flex; gap: 8px; }
+
+    .c-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(56,189,248,0.25);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .c-dot.active {
+      background: #38bdf8;
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-card { min-width: 220px; }
+      .carousel-img-wrap { height: 150px; }
+    }
   </style>
 </head>
 <body>
@@ -326,102 +612,84 @@
       </p>
     </div>
 
-    <div class="mockups-grid fade-up">
+    <!-- CARRUSEL -->
+    <div class="carousel-wrap fade-up">
+      <div class="carousel-track" id="carouselTrack">
 
-      <!-- MAQUETA 1: RESTAURANTE -->
-      <div class="phone-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="mock-site mock-restaurant">
-              <div class="m-hero">
-                <div class="m-logo">🍽️</div>
-                <div class="m-title">LA ESQUINA</div>
-                <div class="m-sub">RESTAURANTE · CORRIENTES</div>
-                <div class="m-btn">📲 Reservar por WhatsApp</div>
-              </div>
-              <div class="m-section">
-                <div class="m-section-title">🥩 PLATOS PRINCIPALES</div>
-                <div class="m-img">🥩</div>
-                <div class="m-menu-item"><span>Asado completo</span><span class="m-price">$3.500</span></div>
-                <div class="m-menu-item"><span>Milanesa napolitana</span><span class="m-price">$2.800</span></div>
-                <div class="m-menu-item"><span>Pollo grillado</span><span class="m-price">$2.400</span></div>
-                <div class="m-menu-item"><span>Bife de chorizo</span><span class="m-price">$4.200</span></div>
-              </div>
-              <div class="m-section">
-                <div class="m-section-title">🍹 BEBIDAS</div>
-                <div class="m-menu-item"><span>Gaseosa</span><span class="m-price">$800</span></div>
-                <div class="m-menu-item"><span>Cerveza artesanal</span><span class="m-price">$1.200</span></div>
-                <div class="m-menu-item"><span>Vino malbec</span><span class="m-price">$2.000</span></div>
-              </div>
-              <div class="m-section">
-                <div class="m-section-title">🍮 POSTRES</div>
-                <div class="m-menu-item"><span>Flan casero</span><span class="m-price">$900</span></div>
-                <div class="m-menu-item"><span>Panqueques</span><span class="m-price">$1.100</span></div>
-              </div>
-              <div class="m-footer">© La Esquina · Corrientes Capital · Web por Kleiin MW</div>
-            </div>
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/restaurante.jpg" alt="Restaurante" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">🍽️</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Restaurante / Parrilla</span>
+            <span class="carousel-desc">Menú digital + reservas WhatsApp</span>
           </div>
         </div>
-        <div class="mockup-info">
-          <div class="mockup-label">Restaurante / Parrilla</div>
-          <div class="mockup-desc">Menú digital, contacto por WhatsApp y diseño a medida</div>
-          <span class="mockup-tag">Ejemplo</span>
-        </div>
-      </div>
 
-      <!-- MAQUETA 2: CORPORATIVO -->
-      <div class="phone-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="mock-site mock-corp">
-              <div class="m-nav">
-                <div class="m-nav-logo">CORP S.A.</div>
-                <div class="m-nav-btn">Contactar</div>
-              </div>
-              <div class="m-hero">
-                <div class="m-hero-title">Soluciones Empresariales</div>
-                <div class="m-hero-sub">CORRIENTES · ARGENTINA</div>
-                <div class="m-hero-btn">Conocé más →</div>
-              </div>
-              <div class="m-cards">
-                <div class="m-card">
-                  <div class="m-card-icon">🏢</div>
-                  <div class="m-card-title">Empresa</div>
-                  <div class="m-card-text">Quiénes somos</div>
-                </div>
-                <div class="m-card">
-                  <div class="m-card-icon">📊</div>
-                  <div class="m-card-title">Servicios</div>
-                  <div class="m-card-text">Lo que hacemos</div>
-                </div>
-                <div class="m-card">
-                  <div class="m-card-icon">📞</div>
-                  <div class="m-card-title">Contacto</div>
-                  <div class="m-card-text">Escribinos</div>
-                </div>
-              </div>
-              <div class="m-section">
-                <div class="m-section-title">Nuestro alcance</div>
-                <div class="m-row"><span class="m-label">Clientes</span><div class="m-bar" style="width:70%"></div></div>
-                <div class="m-row"><span class="m-label">Proyectos</span><div class="m-bar" style="width:85%"></div></div>
-                <div class="m-row"><span class="m-label">Satisfacción</span><div class="m-bar" style="width:95%"></div></div>
-              </div>
-              <div class="m-section">
-                <div class="m-section-title">Sobre nosotros</div>
-                <div style="color:#555;font-size:6.5px;line-height:1.6;">Somos una empresa comprometida con la excelencia y la innovación. Brindamos soluciones integrales para el crecimiento de su negocio.</div>
-              </div>
-              <div class="m-footer">© Corp S.A. · Web por Kleiin MW</div>
-            </div>
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/gym.jpg" alt="Gym" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">💪</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Gimnasio / Fitness</span>
+            <span class="carousel-desc">Planes, horarios y consultas</span>
           </div>
         </div>
-        <div class="mockup-info">
-          <div class="mockup-label">Empresa / Corporativo</div>
-          <div class="mockup-desc">Presencia profesional, servicios y contacto directo</div>
-          <span class="mockup-tag">Ejemplo</span>
+
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/concesionaria.jpg" alt="Concesionaria" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">🚗</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Concesionaria</span>
+            <span class="carousel-desc">Catálogo de vehículos + contacto</span>
+          </div>
         </div>
+
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/peluqueria.jpg" alt="Peluquería" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">✂️</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Peluquería / Barbería</span>
+            <span class="carousel-desc">Servicios, galería y turnos</span>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/empresa.jpg" alt="Empresa" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">🏢</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Empresa / Corporativo</span>
+            <span class="carousel-desc">Presencia profesional online</span>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-img-wrap">
+            <img src="assets/carousel/tienda.jpg" alt="Tienda" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="carousel-placeholder">🛍️</div>
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-rubro">Tienda / Local</span>
+            <span class="carousel-desc">Catálogo de productos + pedidos</span>
+          </div>
+        </div>
+
       </div>
 
-
+      <!-- Controles -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn">&#8592;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn">&#8594;</button>
+      </div>
     </div>
 
     <!-- CTA debajo de maquetas -->
