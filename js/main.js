@@ -68,3 +68,77 @@ window.addEventListener('scroll', () => {
     setTimeout(() => { intro.style.display = 'none'; }, 900);
   }, 2500);
 })();
+// ── LÓGICA DEL CARRUSEL DE TRABAJOS (KLEIIN MW) ──
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("carouselTrack");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dotsContainer = document.getElementById("carouselDots");
+  const cards = document.querySelectorAll(".carousel-card");
+
+  // Validación por si acaso no encuentra los elementos en el HTML
+  if (!track || cards.length === 0 || !prevBtn || !nextBtn || !dotsContainer) {
+    console.warn("No se encontraron los elementos del carrusel en el HTML.");
+    return;
+  }
+
+  let currentIndex = 0;
+
+  // 1. Crear los puntos (dots) dinámicamente según las tarjetas que tengas
+  cards.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("c-dot");
+    if (index === 0) dot.classList.add("active"); // El primero arranca activo
+    
+    // Al hacer clic en un punto, va directo a esa tarjeta
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".c-dot");
+
+  // 2. Función para mover el carrusel y actualizar los puntos
+  function updateCarousel() {
+    // Tomamos el ancho real de una tarjeta + los 20px de gap que configuraste en CSS
+    const cardWidth = cards[0].getBoundingClientRect().width + 20; 
+    
+    // Desplazamos el contenedor track hacia la izquierda
+    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+    // Actualizamos el estado visual del punto activo
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  // 3. Control de la flecha "Siguiente"
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < cards.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Al llegar al final, vuelve al inicio
+    }
+    updateCarousel();
+  });
+
+  // 4. Control de la flecha "Anterior"
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = cards.length - 1; // Si está al inicio y va para atrás, va al final
+    }
+    updateCarousel();
+  });
+
+  // 5. Ajustar la posición si el usuario cambia el tamaño de la ventana (Resize)
+  window.addEventListener("resize", updateCarousel);
+});
