@@ -6,6 +6,267 @@
   <title>Kleiin MW — Cybersecurity & Web Development</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── MAQUETAS ── */
+    #maquetas {
+      position: relative;
+      z-index: 1;
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .mockups-intro {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Marco del celular */
+    .phone-mockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .phone-frame {
+      width: 220px;
+      height: 420px;
+      background: #0a0f1a;
+      border-radius: 36px;
+      border: 3px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 30px rgba(56,189,248,0.15), inset 0 0 20px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 6px;
+      background: rgba(56,189,248,0.3);
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    .phone-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .phone-screen {
+      position: absolute;
+      top: 28px; left: 4px; right: 4px; bottom: 4px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #0d1b2a;
+    }
+
+    .phone-screen iframe {
+      width: 375px;
+      height: 812px;
+      border: none;
+      transform: scale(0.558);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    /* Scroll animado */
+    .phone-screen.auto-scroll iframe {
+      animation: autoScroll 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes autoScroll {
+      0%   { transform: scale(0.558) translateY(0); }
+      100% { transform: scale(0.558) translateY(-400px); }
+    }
+
+    /* Maqueta simulada (sin iframe) */
+    .mock-site {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+      font-size: 8px;
+      animation: scrollSite 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes scrollSite {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-55%); }
+    }
+
+    /* === RESTAURANTE === */
+    .mock-restaurant { background: #1a0a00; }
+    .mock-restaurant .m-hero {
+      background: linear-gradient(135deg, #3d1a00, #8b3a00);
+      padding: 16px 10px;
+      text-align: center;
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .mock-restaurant .m-logo {
+      width: 36px; height: 36px;
+      background: #ffd700;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .mock-restaurant .m-title { font-size: 13px; color: #ffd700; margin-bottom: 2px; }
+    .mock-restaurant .m-sub { font-size: 7px; color: #ffaa44; letter-spacing: 2px; }
+    .mock-restaurant .m-btn {
+      display: inline-block;
+      background: #25d460;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 7px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    .mock-restaurant .m-section { padding: 10px; }
+    .mock-restaurant .m-section-title { color: #ffd700; font-size: 9px; font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #3d2a00; padding-bottom: 4px; }
+    .mock-restaurant .m-menu-item {
+      display: flex; justify-content: space-between;
+      color: #ffcc88; padding: 4px 0;
+      border-bottom: 1px solid rgba(255,200,100,0.1);
+      font-size: 7.5px;
+    }
+    .mock-restaurant .m-price { color: #ffd700; font-weight: bold; }
+    .mock-restaurant .m-img {
+      width: 100%; height: 50px;
+      background: linear-gradient(135deg, #5c2a00, #3d1a00);
+      border-radius: 6px;
+      margin: 6px 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .mock-restaurant .m-footer {
+      background: #0f0500;
+      padding: 8px;
+      text-align: center;
+      color: #886644;
+      font-size: 6px;
+    }
+
+    /* === CORPORATIVO === */
+    .mock-corp { background: #f0f4f8; }
+    .mock-corp .m-nav {
+      background: #1a2a4a;
+      padding: 8px 10px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mock-corp .m-nav-logo { color: #38bdf8; font-size: 9px; font-weight: bold; letter-spacing: 1px; }
+    .mock-corp .m-nav-btn { background: #38bdf8; color: #fff; padding: 3px 8px; border-radius: 3px; font-size: 6px; }
+    .mock-corp .m-hero {
+      background: linear-gradient(135deg, #1a2a4a, #0d3b6e);
+      padding: 20px 10px;
+      text-align: center;
+    }
+    .mock-corp .m-hero-title { color: #fff; font-size: 12px; font-weight: bold; margin-bottom: 4px; }
+    .mock-corp .m-hero-sub { color: #38bdf8; font-size: 7px; letter-spacing: 2px; margin-bottom: 10px; }
+    .mock-corp .m-hero-btn { background: #38bdf8; color: #0d1b2a; padding: 5px 14px; border-radius: 3px; font-size: 7px; font-weight: bold; display: inline-block; }
+    .mock-corp .m-cards { display: flex; gap: 6px; padding: 10px; }
+    .mock-corp .m-card { flex: 1; background: #fff; border-radius: 6px; padding: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .mock-corp .m-card-icon { font-size: 14px; margin-bottom: 4px; }
+    .mock-corp .m-card-title { color: #1a2a4a; font-size: 7px; font-weight: bold; }
+    .mock-corp .m-card-text { color: #666; font-size: 6px; margin-top: 2px; }
+    .mock-corp .m-section { padding: 10px; background: #fff; margin: 6px; border-radius: 6px; }
+    .mock-corp .m-section-title { color: #1a2a4a; font-size: 9px; font-weight: bold; margin-bottom: 6px; }
+    .mock-corp .m-row { display: flex; gap: 6px; margin-bottom: 4px; }
+    .mock-corp .m-bar { height: 6px; background: #38bdf8; border-radius: 3px; }
+    .mock-corp .m-label { color: #666; font-size: 6px; width: 40px; }
+    .mock-corp .m-footer { background: #1a2a4a; padding: 8px; text-align: center; color: #38bdf8; font-size: 6px; }
+
+    /* === PORTAFOLIO (proyecto real) === */
+    .mock-portfolio { background: #0d1b2a; }
+    .mock-portfolio .m-nav {
+      background: rgba(13,27,42,0.95);
+      padding: 8px 10px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(56,189,248,0.2);
+    }
+    .mock-portfolio .m-nav-logo { color: #38bdf8; font-size: 8px; font-weight: bold; letter-spacing: 1px; }
+    .mock-portfolio .m-hero {
+      padding: 20px 10px;
+      text-align: center;
+      background: linear-gradient(135deg, #0d1b2a, #112240);
+    }
+    .mock-portfolio .m-avatar {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #1e6fa8, #38bdf8);
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .mock-portfolio .m-name { color: #fff; font-size: 11px; font-weight: bold; margin-bottom: 2px; }
+    .mock-portfolio .m-role { color: #38bdf8; font-size: 7px; letter-spacing: 2px; margin-bottom: 8px; }
+    .mock-portfolio .m-tags { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+    .mock-portfolio .m-tag { background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.3); color: #38bdf8; padding: 2px 6px; border-radius: 10px; font-size: 6px; }
+    .mock-portfolio .m-projects { padding: 10px; }
+    .mock-portfolio .m-proj-title { color: #38bdf8; font-size: 8px; font-weight: bold; margin-bottom: 8px; letter-spacing: 1px; }
+    .mock-portfolio .m-proj-card { background: rgba(17,34,64,0.8); border: 1px solid rgba(56,189,248,0.15); border-radius: 6px; padding: 8px; margin-bottom: 6px; }
+    .mock-portfolio .m-proj-name { color: #fff; font-size: 8px; font-weight: bold; margin-bottom: 2px; }
+    .mock-portfolio .m-proj-desc { color: #8badc8; font-size: 6px; line-height: 1.5; }
+
+    /* Mockup info */
+    .mockup-info { text-align: center; }
+    .mockup-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .mockup-desc { color: #e0eaf4; font-size: 0.78rem; margin-bottom: 12px; }
+    .mockup-tag {
+      display: inline-block;
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+      color: var(--cyan);
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+    .mockup-tag.real {
+      background: rgba(37,212,96,0.08);
+      border-color: rgba(37,212,96,0.3);
+      color: #25d460;
+    }
+
+    /* Glow on hover */
+    .phone-frame:hover {
+      border-color: rgba(56,189,248,0.8);
+      box-shadow: 0 0 40px rgba(56,189,248,0.3);
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      #maquetas { padding: 60px 20px; }
+      .mockups-grid { grid-template-columns: 1fr; gap: 48px; }
+      .phone-mockup { align-items: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,9 +287,9 @@
       <span>KLEIIN MW</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#maquetas">Trabajos</a></li>
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Kleiin%20MW" target="_blank" class="nav-cta">Contactar</a>
@@ -42,13 +303,217 @@
       <div class="hero-badge">Corrientes Capital · Argentina</div>
       <h1 class="hero-title">KLEIIN MW</h1>
       <p class="hero-sub">Cybersecurity & Web Development</p>
-      <p class="hero-desc">Soluciones digitales a medida: desde landing pages profesionales hasta instalación de entretenimiento en tu smart TV. Tecnología accesible para tu negocio.</p>
+      <p class="hero-desc">Llevamos tu negocio al mundo digital con páginas web profesionales y soluciones tecnológicas a medida. Rápido, accesible y con soporte real.</p>
       <div class="hero-btns">
-        <a href="#servicios" class="btn-primary">Ver servicios</a>
-        <a href="#portafolio" class="btn-secondary">Ver portafolio</a>
+        <a href="#maquetas" class="btn-primary">Ver nuestros trabajos</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
       </div>
     </div>
     <div class="scroll-indicator">Scroll</div>
+  </div>
+
+  <!-- MAQUETAS ⭐ -->
+  <section id="maquetas">
+    <div class="fade-up mockups-intro">
+      <span class="section-label">// Nuestros trabajos</span>
+      <h2 class="section-title">Webs que <span>creamos</span></h2>
+      <div class="divider" style="margin: 0 auto 16px;"></div>
+      <p style="color:#e0eaf4; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
+        Cada negocio merece una presencia digital única. Mirá ejemplos de lo que podemos hacer por el tuyo.
+      </p>
+    </div>
+
+    <div class="mockups-grid fade-up">
+
+      <!-- MAQUETA 1: RESTAURANTE -->
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="mock-site mock-restaurant">
+              <div class="m-hero">
+                <div class="m-logo">🍽️</div>
+                <div class="m-title">LA ESQUINA</div>
+                <div class="m-sub">RESTAURANTE · CORRIENTES</div>
+                <div class="m-btn">📲 Reservar por WhatsApp</div>
+              </div>
+              <div class="m-section">
+                <div class="m-section-title">🥩 PLATOS PRINCIPALES</div>
+                <div class="m-img">🥩</div>
+                <div class="m-menu-item"><span>Asado completo</span><span class="m-price">$3.500</span></div>
+                <div class="m-menu-item"><span>Milanesa napolitana</span><span class="m-price">$2.800</span></div>
+                <div class="m-menu-item"><span>Pollo grillado</span><span class="m-price">$2.400</span></div>
+                <div class="m-menu-item"><span>Bife de chorizo</span><span class="m-price">$4.200</span></div>
+              </div>
+              <div class="m-section">
+                <div class="m-section-title">🍹 BEBIDAS</div>
+                <div class="m-menu-item"><span>Gaseosa</span><span class="m-price">$800</span></div>
+                <div class="m-menu-item"><span>Cerveza artesanal</span><span class="m-price">$1.200</span></div>
+                <div class="m-menu-item"><span>Vino malbec</span><span class="m-price">$2.000</span></div>
+              </div>
+              <div class="m-section">
+                <div class="m-section-title">🍮 POSTRES</div>
+                <div class="m-menu-item"><span>Flan casero</span><span class="m-price">$900</span></div>
+                <div class="m-menu-item"><span>Panqueques</span><span class="m-price">$1.100</span></div>
+              </div>
+              <div class="m-footer">© La Esquina · Corrientes Capital · Web por Kleiin MW</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-info">
+          <div class="mockup-label">Restaurante / Parrilla</div>
+          <div class="mockup-desc">Menú digital, contacto por WhatsApp y diseño a medida</div>
+          <span class="mockup-tag">Ejemplo</span>
+        </div>
+      </div>
+
+      <!-- MAQUETA 2: CORPORATIVO -->
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="mock-site mock-corp">
+              <div class="m-nav">
+                <div class="m-nav-logo">CORP S.A.</div>
+                <div class="m-nav-btn">Contactar</div>
+              </div>
+              <div class="m-hero">
+                <div class="m-hero-title">Soluciones Empresariales</div>
+                <div class="m-hero-sub">CORRIENTES · ARGENTINA</div>
+                <div class="m-hero-btn">Conocé más →</div>
+              </div>
+              <div class="m-cards">
+                <div class="m-card">
+                  <div class="m-card-icon">🏢</div>
+                  <div class="m-card-title">Empresa</div>
+                  <div class="m-card-text">Quiénes somos</div>
+                </div>
+                <div class="m-card">
+                  <div class="m-card-icon">📊</div>
+                  <div class="m-card-title">Servicios</div>
+                  <div class="m-card-text">Lo que hacemos</div>
+                </div>
+                <div class="m-card">
+                  <div class="m-card-icon">📞</div>
+                  <div class="m-card-title">Contacto</div>
+                  <div class="m-card-text">Escribinos</div>
+                </div>
+              </div>
+              <div class="m-section">
+                <div class="m-section-title">Nuestro alcance</div>
+                <div class="m-row"><span class="m-label">Clientes</span><div class="m-bar" style="width:70%"></div></div>
+                <div class="m-row"><span class="m-label">Proyectos</span><div class="m-bar" style="width:85%"></div></div>
+                <div class="m-row"><span class="m-label">Satisfacción</span><div class="m-bar" style="width:95%"></div></div>
+              </div>
+              <div class="m-section">
+                <div class="m-section-title">Sobre nosotros</div>
+                <div style="color:#555;font-size:6.5px;line-height:1.6;">Somos una empresa comprometida con la excelencia y la innovación. Brindamos soluciones integrales para el crecimiento de su negocio.</div>
+              </div>
+              <div class="m-footer">© Corp S.A. · Web por Kleiin MW</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-info">
+          <div class="mockup-label">Empresa / Corporativo</div>
+          <div class="mockup-desc">Presencia profesional, servicios y contacto directo</div>
+          <span class="mockup-tag">Ejemplo</span>
+        </div>
+      </div>
+
+      <!-- MAQUETA 3: PORTAFOLIO REAL -->
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="mock-site mock-portfolio">
+              <div class="m-nav">
+                <div class="m-nav-logo">KLEIIN MW</div>
+                <div style="color:#38bdf8;font-size:6px;">Portafolio</div>
+              </div>
+              <div class="m-hero">
+                <div class="m-avatar">👨‍💻</div>
+                <div class="m-name">Kleiin MW</div>
+                <div class="m-role">WEB DEVELOPER · CORRIENTES</div>
+                <div class="m-tags">
+                  <span class="m-tag">HTML</span>
+                  <span class="m-tag">CSS</span>
+                  <span class="m-tag">JavaScript</span>
+                  <span class="m-tag">GitHub</span>
+                </div>
+              </div>
+              <div class="m-projects">
+                <div class="m-proj-title">// PROYECTOS</div>
+                <div class="m-proj-card">
+                  <div class="m-proj-name">🌐 Kleiin MW — Web Empresa</div>
+                  <div class="m-proj-desc">Landing page corporativa con intro Matrix, animaciones y contacto WhatsApp</div>
+                </div>
+                <div class="m-proj-card">
+                  <div class="m-proj-name">📺 Kleiin MW — Smart TV</div>
+                  <div class="m-proj-desc">Página de servicio de instalación de entretenimiento para Android TV</div>
+                </div>
+                <div class="m-proj-card">
+                  <div class="m-proj-name">🍽️ Landing Restaurante</div>
+                  <div class="m-proj-desc">Menú digital con WhatsApp directo para comercio gastronómico</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-info">
+          <div class="mockup-label">Portafolio Real</div>
+          <div class="mockup-desc">Nuestro trabajo publicado y en producción</div>
+          <span class="mockup-tag real">✓ Proyecto real</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA debajo de maquetas -->
+    <div class="fade-up" style="text-align:center; margin-top:56px;">
+      <p style="color:#e0eaf4; margin-bottom:20px; font-size:1rem;">¿Querés una web así para tu negocio?</p>
+      <a href="https://wa.me/543794082942?text=Hola%2C%20vi%20las%20maquetas%20en%20la%20web%20y%20quiero%20una%20landing%20page%20para%20mi%20negocio%20%F0%9F%8C%90" target="_blank" class="btn-primary">Quiero mi web ahora →</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <div id="servicios">
+    <div class="inner">
+      <div class="fade-up">
+        <span class="section-label">// Servicios</span>
+        <h2 class="section-title">Lo que <span>hacemos</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="services-grid fade-up">
+
+        <!-- Servicio 1 — PROTAGONISTA -->
+        <div class="service-card">
+          <span class="service-icon">🌐</span>
+          <div class="service-name">Landing Pages Profesionales</div>
+          <p class="service-desc">Creamos páginas web vitrina para tu negocio o comercio. Diseño moderno, carga rápida y contacto directo por WhatsApp — sin necesidad de pagos online.</p>
+          <ul class="service-features">
+            <li>Diseño personalizado y responsive</li>
+            <li>Botón de contacto directo a WhatsApp</li>
+            <li>Sección de menú o productos</li>
+            <li>Publicación incluida</li>
+            <li>Ideal para restaurantes, comercios y edificios</li>
+          </ul>
+          <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20consultar%20sobre%20el%20servicio%20de%20landing%20page%20%F0%9F%8C%90" target="_blank" class="service-link">Consultar precio →</a>
+        </div>
+
+        <!-- Servicio 2 — SECUNDARIO -->
+        <div class="service-card" style="opacity:0.85;">
+          <span class="service-icon">📺</span>
+          <div class="service-name">Instalación de Apps en Smart TV</div>
+          <p class="service-desc">Llevamos deportes en vivo, series y películas directo a tu smart TV o Android TV Box. Instalación rápida, soporte post-instalación incluido.</p>
+          <ul class="service-features">
+            <li>Fútbol, básquet, F1 y más deportes en vivo</li>
+            <li>Miles de películas y series on demand</li>
+            <li>Compatible con Android TV y TV Box</li>
+            <li>Soporte por WhatsApp incluido</li>
+            <li>Servicio disponible en Corrientes Capital</li>
+          </ul>
+          <a href="https://kleiinmw.github.io/Kleiin_mw/" target="_blank" class="service-link">Ver más detalles →</a>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- QUIENES SOMOS -->
@@ -85,55 +550,11 @@
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <div id="servicios">
-    <div class="inner">
-      <div class="fade-up">
-        <span class="section-label">// Servicios</span>
-        <h2 class="section-title">Lo que <span>hacemos</span></h2>
-        <div class="divider"></div>
-      </div>
-      <div class="services-grid fade-up">
-
-        <!-- Servicio 1 -->
-        <div class="service-card">
-          <span class="service-icon">🌐</span>
-          <div class="service-name">Landing Pages Profesionales</div>
-          <p class="service-desc">Creamos páginas web vitrina para tu negocio o comercio. Diseño moderno, carga rápida y contacto directo por WhatsApp — sin necesidad de pagos online.</p>
-          <ul class="service-features">
-            <li>Diseño personalizado y responsive</li>
-            <li>Botón de contacto directo a WhatsApp</li>
-            <li>Sección de menú o productos</li>
-            <li>Publicación incluida</li>
-            <li>Ideal para restaurantes, comercios y edificios</li>
-          </ul>
-          <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20consultar%20sobre%20el%20servicio%20de%20landing%20page" target="_blank" class="service-link">Consultar precio →</a>
-        </div>
-
-        <!-- Servicio 2 -->
-        <div class="service-card">
-          <span class="service-icon">📺</span>
-          <div class="service-name">Instalación de Apps en Smart TV</div>
-          <p class="service-desc">Llevamos deportes en vivo, series y películas directo a tu smart TV o Android TV Box. Instalación rápida, soporte post-instalación incluido.</p>
-          <ul class="service-features">
-            <li>Fútbol, básquet, F1 y más deportes en vivo</li>
-            <li>Miles de películas y series on demand</li>
-            <li>Compatible con Android TV y TV Box</li>
-            <li>Soporte por WhatsApp incluido</li>
-            <li>Servicio disponible en Corrientes Capital</li>
-          </ul>
-          <a href="https://kleiinmw.github.io/Kleiin_mw/" target="_blank" class="service-link">Ver más detalles →</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <!-- PORTAFOLIO -->
   <section id="portafolio">
     <div class="fade-up">
       <span class="section-label">// Portafolio</span>
-      <h2 class="section-title">Nuestro <span>trabajo</span></h2>
+      <h2 class="section-title">Proyecto <span>real publicado</span></h2>
       <div class="divider"></div>
     </div>
     <div class="portfolio-card fade-up">
