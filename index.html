@@ -6,744 +6,6 @@
   <title>Kleiin MW — Cybersecurity & Web Development</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    /* ── MAQUETAS ── */
-    #maquetas {
-      position: relative;
-      z-index: 1;
-      padding: 100px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .mockups-intro {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .mockups-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      align-items: start;
-    }
-
-    /* Marco del celular */
-    .phone-mockup {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .phone-frame {
-      width: 220px;
-      height: 420px;
-      background: #0a0f1a;
-      border-radius: 36px;
-      border: 3px solid rgba(56,189,248,0.4);
-      box-shadow: 0 0 30px rgba(56,189,248,0.15), inset 0 0 20px rgba(0,0,0,0.5);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 10px; left: 50%;
-      transform: translateX(-50%);
-      width: 60px; height: 6px;
-      background: rgba(56,189,248,0.3);
-      border-radius: 10px;
-      z-index: 10;
-    }
-
-    .phone-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 34px;
-      background: linear-gradient(135deg, rgba(56,189,248,0.06) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .phone-screen {
-      position: absolute;
-      top: 28px; left: 4px; right: 4px; bottom: 4px;
-      border-radius: 28px;
-      overflow: hidden;
-      background: #0d1b2a;
-    }
-
-    .phone-screen iframe {
-      width: 375px;
-      height: 812px;
-      border: none;
-      transform: scale(0.558);
-      transform-origin: top left;
-      pointer-events: none;
-    }
-
-    /* Scroll animado */
-    .phone-screen.auto-scroll iframe {
-      animation: autoScroll 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes autoScroll {
-      0%   { transform: scale(0.558) translateY(0); }
-      100% { transform: scale(0.558) translateY(-400px); }
-    }
-
-    /* Maqueta simulada (sin iframe) */
-    .mock-site {
-      width: 100%;
-      height: 200%;
-      overflow: hidden;
-      font-family: sans-serif;
-      font-size: 8px;
-      animation: scrollSite 10s linear infinite;
-    }
-
-    @keyframes scrollSite {
-      0%   { transform: translateY(0); }
-      40%  { transform: translateY(-45%); }
-      50%  { transform: translateY(-45%); }
-      60%  { transform: translateY(0); }
-      100% { transform: translateY(0); }
-    }
-
-    /* === RESTAURANTE === */
-    .mock-restaurant { background: #1a0a00; }
-    .mock-restaurant .m-hero {
-      background: linear-gradient(135deg, #3d1a00, #8b3a00);
-      padding: 16px 10px;
-      text-align: center;
-      color: #ffd700;
-      font-weight: bold;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-    .mock-restaurant .m-logo {
-      width: 36px; height: 36px;
-      background: #ffd700;
-      border-radius: 50%;
-      margin: 0 auto 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .mock-restaurant .m-title { font-size: 13px; color: #ffd700; margin-bottom: 2px; }
-    .mock-restaurant .m-sub { font-size: 7px; color: #ffaa44; letter-spacing: 2px; }
-    .mock-restaurant .m-btn {
-      display: inline-block;
-      background: #25d460;
-      color: #fff;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 7px;
-      margin-top: 8px;
-      font-weight: bold;
-    }
-    .mock-restaurant .m-section { padding: 10px; }
-    .mock-restaurant .m-section-title { color: #ffd700; font-size: 9px; font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #3d2a00; padding-bottom: 4px; }
-    .mock-restaurant .m-menu-item {
-      display: flex; justify-content: space-between;
-      color: #ffcc88; padding: 4px 0;
-      border-bottom: 1px solid rgba(255,200,100,0.1);
-      font-size: 7.5px;
-    }
-    .mock-restaurant .m-price { color: #ffd700; font-weight: bold; }
-    .mock-restaurant .m-img {
-      width: 100%; height: 50px;
-      background: linear-gradient(135deg, #5c2a00, #3d1a00);
-      border-radius: 6px;
-      margin: 6px 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-    }
-    .mock-restaurant .m-footer {
-      background: #0f0500;
-      padding: 8px;
-      text-align: center;
-      color: #886644;
-      font-size: 6px;
-    }
-
-    /* === CORPORATIVO === */
-    .mock-corp { background: #f0f4f8; }
-    .mock-corp .m-nav {
-      background: #1a2a4a;
-      padding: 8px 10px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .mock-corp .m-nav-logo { color: #38bdf8; font-size: 9px; font-weight: bold; letter-spacing: 1px; }
-    .mock-corp .m-nav-btn { background: #38bdf8; color: #fff; padding: 3px 8px; border-radius: 3px; font-size: 6px; }
-    .mock-corp .m-hero {
-      background: linear-gradient(135deg, #1a2a4a, #0d3b6e);
-      padding: 20px 10px;
-      text-align: center;
-    }
-    .mock-corp .m-hero-title { color: #fff; font-size: 12px; font-weight: bold; margin-bottom: 4px; }
-    .mock-corp .m-hero-sub { color: #38bdf8; font-size: 7px; letter-spacing: 2px; margin-bottom: 10px; }
-    .mock-corp .m-hero-btn { background: #38bdf8; color: #0d1b2a; padding: 5px 14px; border-radius: 3px; font-size: 7px; font-weight: bold; display: inline-block; }
-    .mock-corp .m-cards { display: flex; gap: 6px; padding: 10px; }
-    .mock-corp .m-card { flex: 1; background: #fff; border-radius: 6px; padding: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
-    .mock-corp .m-card-icon { font-size: 14px; margin-bottom: 4px; }
-    .mock-corp .m-card-title { color: #1a2a4a; font-size: 7px; font-weight: bold; }
-    .mock-corp .m-card-text { color: #666; font-size: 6px; margin-top: 2px; }
-    .mock-corp .m-section { padding: 10px; background: #fff; margin: 6px; border-radius: 6px; }
-    .mock-corp .m-section-title { color: #1a2a4a; font-size: 9px; font-weight: bold; margin-bottom: 6px; }
-    .mock-corp .m-row { display: flex; gap: 6px; margin-bottom: 4px; }
-    .mock-corp .m-bar { height: 6px; background: #38bdf8; border-radius: 3px; }
-    .mock-corp .m-label { color: #666; font-size: 6px; width: 40px; }
-    .mock-corp .m-footer { background: #1a2a4a; padding: 8px; text-align: center; color: #38bdf8; font-size: 6px; }
-
-    /* === PORTAFOLIO (proyecto real) === */
-    .mock-portfolio { background: #0d1b2a; }
-    .mock-portfolio .m-nav {
-      background: rgba(13,27,42,0.95);
-      padding: 8px 10px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid rgba(56,189,248,0.2);
-    }
-    .mock-portfolio .m-nav-logo { color: #38bdf8; font-size: 8px; font-weight: bold; letter-spacing: 1px; }
-    .mock-portfolio .m-hero {
-      padding: 20px 10px;
-      text-align: center;
-      background: linear-gradient(135deg, #0d1b2a, #112240);
-    }
-    .mock-portfolio .m-avatar {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, #1e6fa8, #38bdf8);
-      border-radius: 50%;
-      margin: 0 auto 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-    .mock-portfolio .m-name { color: #fff; font-size: 11px; font-weight: bold; margin-bottom: 2px; }
-    .mock-portfolio .m-role { color: #38bdf8; font-size: 7px; letter-spacing: 2px; margin-bottom: 8px; }
-    .mock-portfolio .m-tags { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
-    .mock-portfolio .m-tag { background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.3); color: #38bdf8; padding: 2px 6px; border-radius: 10px; font-size: 6px; }
-    .mock-portfolio .m-projects { padding: 10px; }
-    .mock-portfolio .m-proj-title { color: #38bdf8; font-size: 8px; font-weight: bold; margin-bottom: 8px; letter-spacing: 1px; }
-    .mock-portfolio .m-proj-card { background: rgba(17,34,64,0.8); border: 1px solid rgba(56,189,248,0.15); border-radius: 6px; padding: 8px; margin-bottom: 6px; }
-    .mock-portfolio .m-proj-name { color: #fff; font-size: 8px; font-weight: bold; margin-bottom: 2px; }
-    .mock-portfolio .m-proj-desc { color: #8badc8; font-size: 6px; line-height: 1.5; }
-
-    /* Mockup info */
-    .mockup-info { text-align: center; }
-    .mockup-label {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .mockup-desc { color: #e0eaf4; font-size: 0.78rem; margin-bottom: 12px; }
-    .mockup-tag {
-      display: inline-block;
-      background: rgba(56,189,248,0.08);
-      border: 1px solid rgba(56,189,248,0.2);
-      color: var(--cyan);
-      font-size: 0.68rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-    }
-    .mockup-tag.real {
-      background: rgba(37,212,96,0.08);
-      border-color: rgba(37,212,96,0.3);
-      color: #25d460;
-    }
-
-    /* Glow on hover */
-    .phone-frame:hover {
-      border-color: rgba(56,189,248,0.8);
-      box-shadow: 0 0 40px rgba(56,189,248,0.3);
-      transition: all 0.3s;
-    }
-
-    @media (max-width: 768px) {
-      #maquetas { padding: 60px 20px; }
-      .mockups-grid { grid-template-columns: 1fr; gap: 48px; }
-      .phone-mockup { align-items: center; }
-    }
-
-    /* ── MAQUETA TU NEGOCIO ── */
-    .mock-tunegocio {
-      background: #0a0a1a;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 8px;
-      gap: 8px;
-      overflow: hidden;
-    }
-
-    .tn-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 80%, rgba(255,180,0,0.08) 0%, transparent 50%);
-      animation: tnBgPulse 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes tnBgPulse {
-      from { opacity: 0.6; }
-      to   { opacity: 1; }
-    }
-
-    .tn-header {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      width: 100%;
-      padding: 6px 0 8px;
-      border-bottom: 1px solid rgba(56,189,248,0.15);
-    }
-
-    .tn-icon-wrap {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(255,180,0,0.1));
-      border: 1.5px solid rgba(56,189,248,0.3);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 5px;
-      font-size: 18px;
-    }
-
-    .tn-name {
-      font-size: 11px;
-      font-weight: bold;
-      color: #38bdf8;
-      letter-spacing: 2px;
-    }
-
-    .tn-sub {
-      font-size: 6px;
-      color: #8badc8;
-      letter-spacing: 1px;
-      margin-top: 2px;
-      transition: opacity 0.4s;
-    }
-
-    .tn-slides {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 160px;
-    }
-
-    .tn-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.5s, transform 0.5s;
-      background: rgba(17,34,64,0.6);
-      border: 1px solid rgba(56,189,248,0.12);
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .tn-slide.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .tn-slide-emoji { font-size: 26px; }
-
-    .tn-slide-title {
-      font-size: 10px;
-      font-weight: bold;
-      color: #fff;
-      letter-spacing: 1px;
-    }
-
-    .tn-slide-rows { width: 100%; }
-
-    .tn-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 7px;
-      color: #8badc8;
-      padding: 4px 0;
-      border-bottom: 1px solid rgba(56,189,248,0.07);
-    }
-
-    .tn-check {
-      color: #25d460;
-      font-weight: bold;
-      font-size: 8px;
-    }
-
-    .tn-dots {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 5px;
-    }
-
-    .tn-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: rgba(56,189,248,0.25);
-      transition: background 0.4s;
-    }
-
-    .tn-dot.active { background: #38bdf8; }
-
-    .tn-cta {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      background: linear-gradient(135deg, #1a8a3a, #25d460);
-      color: #fff;
-      font-size: 7px;
-      font-weight: bold;
-      padding: 7px;
-      border-radius: 6px;
-      text-align: center;
-      animation: tnCtaPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes tnCtaPulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(37,212,96,0.4); }
-      50%      { box-shadow: 0 0 0 5px rgba(37,212,96,0); }
-    }
-
-
-    /* ── CARRUSEL ── */
-    .carousel-wrap {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      margin-top: 20px;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 20px;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: grab;
-      user-select: none;
-    }
-
-    .carousel-track.dragging { cursor: grabbing; transition: none; }
-
-    .carousel-card {
-      min-width: 260px;
-      background: rgba(17,34,64,0.7);
-      border: 1px solid rgba(56,189,248,0.15);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-      flex-shrink: 0;
-    }
-
-    .carousel-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(56,189,248,0.45);
-    }
-
-    .carousel-img-wrap {
-      width: 100%;
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-      background: rgba(13,27,42,0.8);
-    }
-
-    .carousel-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      transition: transform 0.4s;
-    }
-
-    .carousel-card:hover .carousel-img-wrap img { transform: scale(1.04); }
-
-    /* Placeholder cuando no hay imagen */
-    .carousel-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 52px;
-      background: linear-gradient(135deg, rgba(17,34,64,0.9), rgba(13,27,42,0.95));
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
-
-    .carousel-img-wrap:not(.no-img) .carousel-placeholder { opacity: 0; pointer-events: none; }
-    .carousel-img-wrap.no-img img { display: none; }
-
-    .carousel-info {
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .carousel-rubro {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .carousel-desc {
-      font-size: 0.76rem;
-      color: #e0eaf4;
-    }
-
-    /* Controles */
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 28px;
-    }
-
-    .carousel-btn {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(56,189,248,0.35);
-      background: transparent;
-      color: #38bdf8;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .carousel-btn:hover {
-      background: rgba(56,189,248,0.1);
-      border-color: #38bdf8;
-      box-shadow: 0 0 16px rgba(56,189,248,0.25);
-    }
-
-    .carousel-dots { display: flex; gap: 8px; }
-
-    .c-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(56,189,248,0.25);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .c-dot.active {
-      background: #38bdf8;
-      width: 22px;
-      border-radius: 4px;
-    }
-
-    @media (max-width: 768px) {
-      .carousel-card { min-width: 220px; }
-      .carousel-img-wrap { height: 150px; }
-    }
-
-    /* ── MARKETING SECTION ── */
-    #marketing {
-      position: relative;
-      z-index: 1;
-      padding: 100px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .marketing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .marketing-text .section-label { margin-bottom: 12px; }
-
-    .marketing-text h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-      font-weight: 900;
-      line-height: 1.2;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .marketing-text h2 span { color: var(--cyan); }
-
-    .marketing-text p {
-      color: #e0eaf4;
-      font-size: 1rem;
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
-
-    .marketing-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 24px 0 32px;
-    }
-
-    .marketing-pill {
-      background: rgba(56,189,248,0.08);
-      border: 1px solid rgba(56,189,248,0.25);
-      color: var(--cyan-light);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-
-    .marketing-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #1a8a3a, #25d460);
-      color: #fff;
-      padding: 13px 28px;
-      border-radius: 6px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      box-shadow: 0 4px 20px rgba(37,212,96,0.25);
-    }
-
-    .marketing-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(37,212,96,0.4);
-    }
-
-    /* Imagen lado derecho */
-    .marketing-visual {
-      position: relative;
-    }
-
-    .marketing-img-wrap {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(56,189,248,0.15);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .marketing-img-wrap img {
-      width: 100%;
-      height: 360px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.85);
-      transition: filter 0.3s;
-    }
-
-    .marketing-img-wrap:hover img { filter: brightness(1); }
-
-    /* Overlay con stat encima de la imagen */
-    .marketing-overlay {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: rgba(13,27,42,0.88);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(56,189,248,0.2);
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .marketing-overlay-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-    }
-
-    .marketing-overlay-text strong {
-      display: block;
-      color: var(--cyan);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
-    }
-
-    .marketing-overlay-text span {
-      color: #e0eaf4;
-      font-size: 0.78rem;
-    }
-
-    /* Badge flotante */
-    .marketing-badge-float {
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      background: linear-gradient(135deg, var(--blue-mid), var(--cyan));
-      color: var(--navy);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 900;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-align: center;
-      line-height: 1.4;
-      box-shadow: 0 4px 20px rgba(56,189,248,0.35);
-      animation: floatBadge 3s ease-in-out infinite;
-    }
-
-    @keyframes floatBadge {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-6px); }
-    }
-
-    /* Placeholder si no hay imagen */
-    .marketing-img-placeholder {
-      width: 100%;
-      height: 360px;
-      background: linear-gradient(135deg, #0d1b2a, #112240);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .marketing-img-placeholder .big-icon { font-size: 5rem; }
-    .marketing-img-placeholder p {
-      color: #38bdf8;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 768px) {
-      #marketing { padding: 60px 20px; }
-      .marketing-grid { grid-template-columns: 1fr; gap: 40px; }
-      .marketing-img-wrap img { height: 260px; }
-      .marketing-img-placeholder { height: 260px; }
-      .marketing-badge-float { top: -12px; right: 10px; }
-    }
-  </style>
 </head>
 <body>
 
@@ -764,6 +26,7 @@
       <span>KLEIIN MW</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#marketing">Estrategia</a></li>
       <li><a href="#maquetas">Trabajos</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
@@ -782,36 +45,21 @@
       <p class="hero-sub">Cybersecurity & Web Development</p>
       <p class="hero-desc">Llevamos tu negocio al mundo digital con páginas web profesionales y soluciones tecnológicas a medida. Rápido, accesible y con soporte real.</p>
       <div class="hero-btns">
-        <a href="#maquetas" class="btn-primary">Ver nuestros trabajos</a>
-        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+        <a href="#marketing" class="btn-primary">Cómo te ayudamos</a>
+        <a href="#maquetas" class="btn-secondary">Ver trabajos</a>
       </div>
     </div>
     <div class="scroll-indicator">Scroll</div>
   </div>
 
-  <!-- MAQUETAS ⭐ -->
-  <section id="maquetas">
-    <div class="fade-up mockups-intro">
-      <span class="section-label">// Nuestros trabajos</span>
-      <h2 class="section-title">Webs que <span>creamos</span></h2>
-      <div class="divider" style="margin: 0 auto 16px;"></div>
-      <p style="color:#e0eaf4; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
-        Cada negocio merece una presencia digital única. Mirá ejemplos de lo que podemos hacer por el tuyo.
-      </p>
-    </div>
-
-  
   <!-- MARKETING -->
   <section id="marketing">
     <div class="marketing-grid">
-
-      <!-- Texto izquierda -->
       <div class="marketing-text fade-up">
         <span class="section-label">// Nuestra diferencia</span>
         <h2>No solo creamos tu web —<br><span>te ayudamos a vender</span></h2>
         <p>Una web sin estrategia es solo una página bonita. En <strong style="color:#7dd3fc">Kleiin MW</strong> no te dejamos solo después de entregar el proyecto — te acompañamos para que tus primeros clientes lleguen de verdad.</p>
         <p>Te enseñamos a usar tu presencia digital, cómo presentar tu negocio, qué decir y cómo atraer consultas reales por WhatsApp desde el día uno.</p>
-
         <div class="marketing-pills">
           <span class="marketing-pill">📣 Estrategia de contenido</span>
           <span class="marketing-pill">📲 Conversión por WhatsApp</span>
@@ -819,21 +67,15 @@
           <span class="marketing-pill">🎯 Atracción de clientes</span>
           <span class="marketing-pill">🤝 Acompañamiento real</span>
         </div>
-
         <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20la%20estrategia%20de%20marketing%20de%20Kleiin%20MW" target="_blank" class="marketing-cta">
           📲 Quiero saber más
         </a>
       </div>
-
-      <!-- Visual derecha -->
       <div class="marketing-visual fade-up">
         <div class="marketing-badge-float">INCLUIDO<br>EN TU WEB</div>
         <div class="marketing-img-wrap">
-          <img
-            src="assets/marketing.png"
-            alt="Estrategia de marketing"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
+          <img src="assets/marketing.png" alt="Estrategia de marketing"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="marketing-img-placeholder" style="display:none;">
             <div class="big-icon">📊</div>
             <p>Estrategia · Marketing · Ventas</p>
@@ -847,11 +89,20 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- CARRUSEL -->
+  <!-- MAQUETAS / CARRUSEL -->
+  <section id="maquetas">
+    <div class="fade-up mockups-intro">
+      <span class="section-label">// Nuestros trabajos</span>
+      <h2 class="section-title">Webs que <span>creamos</span></h2>
+      <div class="divider" style="margin: 0 auto 16px;"></div>
+      <p style="color:#e0eaf4; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
+        Cada negocio merece una presencia digital única. Mirá ejemplos de lo que podemos hacer por el tuyo.
+      </p>
+    </div>
+
     <div class="carousel-wrap fade-up">
       <div class="carousel-track" id="carouselTrack">
 
@@ -922,8 +173,6 @@
         </div>
 
       </div>
-
-      <!-- Controles -->
       <div class="carousel-controls">
         <button class="carousel-btn" id="prevBtn">&#8592;</button>
         <div class="carousel-dots" id="carouselDots"></div>
@@ -931,10 +180,9 @@
       </div>
     </div>
 
-    <!-- CTA debajo de maquetas -->
     <div class="fade-up" style="text-align:center; margin-top:56px;">
       <p style="color:#e0eaf4; margin-bottom:20px; font-size:1rem;">¿Querés una web así para tu negocio?</p>
-      <a href="https://wa.me/543794082942?text=Hola%2C%20vi%20las%20maquetas%20en%20la%20web%20y%20quiero%20una%20landing%20page%20para%20mi%20negocio%20%F0%9F%8C%90" target="_blank" class="btn-primary">Quiero mi web ahora →</a>
+      <a href="https://wa.me/543794082942?text=Hola%2C%20vi%20los%20trabajos%20en%20la%20web%20y%20quiero%20una%20landing%20page%20para%20mi%20negocio" target="_blank" class="btn-primary">Quiero mi web ahora →</a>
     </div>
   </section>
 
@@ -947,8 +195,6 @@
         <div class="divider"></div>
       </div>
       <div class="services-grid fade-up">
-
-        <!-- Servicio 1 — PROTAGONISTA -->
         <div class="service-card">
           <span class="service-icon">🌐</span>
           <div class="service-name">Landing Pages Profesionales</div>
@@ -960,10 +206,8 @@
             <li>Publicación incluida</li>
             <li>Ideal para restaurantes, comercios y edificios</li>
           </ul>
-          <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20consultar%20sobre%20el%20servicio%20de%20landing%20page%20%F0%9F%8C%90" target="_blank" class="service-link">Consultar precio →</a>
+          <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20consultar%20sobre%20el%20servicio%20de%20landing%20page" target="_blank" class="service-link">Consultar precio →</a>
         </div>
-
-        <!-- Servicio 2 — SECUNDARIO -->
         <div class="service-card" style="opacity:0.85;">
           <span class="service-icon">📺</span>
           <div class="service-name">Instalación de Apps en Smart TV</div>
@@ -977,7 +221,6 @@
           </ul>
           <a href="https://kleiinmw.github.io/Kleiin_mw/" target="_blank" class="service-link">Ver más detalles →</a>
         </div>
-
       </div>
     </div>
   </div>
@@ -1063,8 +306,8 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2025 <strong>KLEIIN MW</strong> · Cybersecurity & Web Development · Corrientes Capital</p>
-    <p style="margin-top: 10px;">
-      <a href="terminos.html" style="color: var(--cyan); text-decoration: none; font-size: 0.78rem; letter-spacing: 1px; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">Términos y Condiciones</a>
+    <p style="margin-top:10px;">
+      <a href="terminos.html">Términos y Condiciones</a>
     </p>
   </footer>
 
