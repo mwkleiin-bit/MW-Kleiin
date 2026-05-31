@@ -70,93 +70,87 @@ window.addEventListener('scroll', () => {
 })();
 
 
-// ── LÓGICA DEL CARRUSEL DE TRABAJOS OPTIMIZADA (KLEIIN MW) ──
-
+// ── CARRUSEL DE TRABAJOS ──
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.getElementById("carouselTrack");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+  const track        = document.getElementById("carouselTrack");
+  const prevBtn      = document.getElementById("prevBtn");
+  const nextBtn      = document.getElementById("nextBtn");
   const dotsContainer = document.getElementById("carouselDots");
-  const cards = document.querySelectorAll(".carousel-card");
+  const cards        = document.querySelectorAll(".carousel-card");
 
   if (!track || cards.length === 0 || !prevBtn || !nextBtn || !dotsContainer) {
-    console.warn("No se encontraron los elementos del carrusel en el HTML.");
+    console.warn("Elementos del carrusel no encontrados.");
     return;
   }
 
-  let currentIndex = 0;
-
-  // Variables para la lógica táctil (Swipe) en celulares
-  let isDragging = false;
-  let startX = 0;
+  let currentIndex   = 0;
+  let isDragging     = false;
+  let startX         = 0;
   let currentTranslate = 0;
-  let prevTranslate = 0;
-  let animationId = 0;
+  let prevTranslate  = 0;
+  let animationId    = 0;
+  let userInteracted = false;
 
-  // 1. Crear los puntos (dots) dinámicamente según las tarjetas
+  // ── Crear dots ──
   cards.forEach((_, index) => {
     const dot = document.createElement("div");
     dot.classList.add("c-dot");
     if (index === 0) dot.classList.add("active");
-    
     dot.addEventListener("click", () => {
       currentIndex = index;
       updateCarousel();
+      resetAutoPlay();
     });
     dotsContainer.appendChild(dot);
   });
 
   const dots = document.querySelectorAll(".c-dot");
 
-  // 2. Función clave para mover el carrusel calculando el ancho real exacto
+  // ── Mover carrusel ──
   function updateCarousel() {
-    // Tomamos offsetWidth de la tarjeta + 16px de gap que definimos en el CSS optimizado
-    const cardWidth = cards[0].offsetWidth + 16; 
-    
-    currentTranslate = -currentIndex * cardWidth;
-    prevTranslate = currentTranslate;
-    
-    track.style.transform = `translateX(${currentTranslate}px)`;
+    const cardWidth    = cards[0].offsetWidth + 16;
+    currentTranslate   = -currentIndex * cardWidth;
+    prevTranslate      = currentTranslate;
+    track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+    track.style.transform  = `translateX(${currentTranslate}px)`;
 
-    // Actualizamos el estado visual del punto activo
-    dots.forEach((dot, index) => {
-      if (index === currentIndex) {
-        dot.classList.add("active");
-      } else {
-        dot.classList.remove("active");
-      }
-    });
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
   }
 
-  // 3. Control de la flecha "Siguiente"
+  // ── Auto avance ──
+  let autoPlay = setInterval(advance, 4000);
+
+  function advance() {
+    currentIndex = currentIndex < cards.length - 1 ? currentIndex + 1 : 0;
+    updateCarousel();
+  }
+
+  function resetAutoPlay() {
+    clearInterval(autoPlay);
+    autoPlay = setInterval(advance, 4000);
+  }
+
+  // ── Flechas ──
   nextBtn.addEventListener("click", () => {
-    if (currentIndex < cards.length - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0; // Vuelve al inicio al llegar al final
-    }
+    currentIndex = currentIndex < cards.length - 1 ? currentIndex + 1 : 0;
     updateCarousel();
+    resetAutoPlay();
   });
 
-  // 4. Control de la flecha "Anterior"
   prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = cards.length - 1; // Va al final si retrocede desde el inicio
-    }
+    currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
     updateCarousel();
+    resetAutoPlay();
   });
 
-  // 5. SOPORTE INTERACTIVO TÁCTIL (Swipe para Mobile / Drag para PC)
-  track.addEventListener("touchstart", touchStart);
-  track.addEventListener("touchend", touchEnd);
-  track.addEventListener("touchmove", touchMove);
-
-  track.addEventListener("mousedown", touchStart);
-  track.addEventListener("mouseup", touchEnd);
+  // ── Swipe táctil y drag mouse ──
+  track.addEventListener("touchstart", touchStart, { passive: true });
+  track.addEventListener("touchend",   touchEnd);
+  track.addEventListener("touchmove",  touchMove, { passive: true });
+  track.addEventListener("mousedown",  touchStart);
+  track.addEventListener("mouseup",    touchEnd);
   track.addEventListener("mouseleave", touchEnd);
-  track.addEventListener("mousemove", touchMove);
+  track.addEventListener("mousemove",  touchMove);
 
   function getPositionX(event) {
     return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
@@ -164,16 +158,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function touchStart(event) {
     isDragging = true;
-    startX = getPositionX(event);
+    startX     = getPositionX(event);
     track.classList.add('dragging');
+    track.style.transition = 'none';
     animationId = requestAnimationFrame(animation);
   }
 
   function touchMove(event) {
     if (!isDragging) return;
-    const currentX = getPositionX(event);
-    const currentPosition = prevTranslate + (currentX - startX);
-    currentTranslate = currentPosition;
+    const currentX   = getPositionX(event);
+    currentTranslate = prevTranslate + (currentX - startX);
   }
 
   function touchEnd() {
@@ -184,14 +178,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const movedBy = currentTranslate - prevTranslate;
 
-    // Si arrastró más de 50px, cambia de tarjeta
-    if (movedBy < -50 && currentIndex < cards.length - 1) {
-      currentIndex++;
-    } else if (movedBy > 50 && currentIndex > 0) {
-      currentIndex--;
-    }
+    if (movedBy < -50 && currentIndex < cards.length - 1) currentIndex++;
+    else if (movedBy > 50 && currentIndex > 0) currentIndex--;
 
     updateCarousel();
+    resetAutoPlay();
   }
 
   function animation() {
@@ -201,6 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 6. Recalcular posición si rota la pantalla o cambia el tamaño (Resize)
+  // ── Recalcular en resize ──
   window.addEventListener("resize", updateCarousel);
+
+  // ── Pausar autoplay si el usuario está sobre el carrusel ──
+  track.addEventListener("mouseenter", () => clearInterval(autoPlay));
+  track.addEventListener("mouseleave", () => {
+    if (!isDragging) resetAutoPlay();
+  });
+
+  // Init
+  updateCarousel();
 });
