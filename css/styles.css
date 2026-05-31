@@ -1051,8 +1051,12 @@ footer a:hover { opacity: 0.7; }
 
   .whatsapp-btn { padding: 14px 24px; font-size: 0.75rem; width: 100%; justify-content: center; }
 
-  .carousel-card { width: 260px; }
-  .carousel-img-wrap { height: 170px; }
+  .carousel-wrap { padding: 10px 0; }
+  .carousel-card {
+    width: calc(100vw - 40px);
+    max-width: 400px;
+  }
+  .carousel-img-wrap { height: 200px; }
 
   footer { padding: 24px 20px; font-size: 0.72rem; }
 }
