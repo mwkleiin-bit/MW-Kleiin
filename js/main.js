@@ -68,7 +68,9 @@ window.addEventListener('scroll', () => {
     setTimeout(() => { intro.style.display = 'none'; }, 900);
   }, 2500);
 })();
-// ── LÓGICA DEL CARRUSEL DE TRABAJOS (KLEIIN MW) ──
+
+
+// ── LÓGICA DEL CARRUSEL DE TRABAJOS OPTIMIZADA (KLEIIN MW) ──
 
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("carouselTrack");
@@ -77,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dotsContainer = document.getElementById("carouselDots");
   const cards = document.querySelectorAll(".carousel-card");
 
-  // Validación por si acaso no encuentra los elementos en el HTML
   if (!track || cards.length === 0 || !prevBtn || !nextBtn || !dotsContainer) {
     console.warn("No se encontraron los elementos del carrusel en el HTML.");
     return;
@@ -85,13 +86,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentIndex = 0;
 
-  // 1. Crear los puntos (dots) dinámicamente según las tarjetas que tengas
+  // Variables para la lógica táctil (Swipe) en celulares
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationId = 0;
+
+  // 1. Crear los puntos (dots) dinámicamente según las tarjetas
   cards.forEach((_, index) => {
     const dot = document.createElement("div");
     dot.classList.add("c-dot");
-    if (index === 0) dot.classList.add("active"); // El primero arranca activo
+    if (index === 0) dot.classList.add("active");
     
-    // Al hacer clic en un punto, va directo a esa tarjeta
     dot.addEventListener("click", () => {
       currentIndex = index;
       updateCarousel();
@@ -101,13 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dots = document.querySelectorAll(".c-dot");
 
-  // 2. Función para mover el carrusel y actualizar los puntos
+  // 2. Función clave para mover el carrusel calculando el ancho real exacto
   function updateCarousel() {
-    // Tomamos el ancho real de una tarjeta + los 20px de gap que configuraste en CSS
-    const cardWidth = cards[0].getBoundingClientRect().width + 20; 
+    // Tomamos offsetWidth de la tarjeta + 16px de gap que definimos en el CSS optimizado
+    const cardWidth = cards[0].offsetWidth + 16; 
     
-    // Desplazamos el contenedor track hacia la izquierda
-    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    currentTranslate = -currentIndex * cardWidth;
+    prevTranslate = currentTranslate;
+    
+    track.style.transform = `translateX(${currentTranslate}px)`;
 
     // Actualizamos el estado visual del punto activo
     dots.forEach((dot, index) => {
@@ -124,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentIndex < cards.length - 1) {
       currentIndex++;
     } else {
-      currentIndex = 0; // Al llegar al final, vuelve al inicio
+      currentIndex = 0; // Vuelve al inicio al llegar al final
     }
     updateCarousel();
   });
@@ -134,11 +143,64 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentIndex > 0) {
       currentIndex--;
     } else {
-      currentIndex = cards.length - 1; // Si está al inicio y va para atrás, va al final
+      currentIndex = cards.length - 1; // Va al final si retrocede desde el inicio
     }
     updateCarousel();
   });
 
-  // 5. Ajustar la posición si el usuario cambia el tamaño de la ventana (Resize)
+  // 5. SOPORTE INTERACTIVO TÁCTIL (Swipe para Mobile / Drag para PC)
+  track.addEventListener("touchstart", touchStart);
+  track.addEventListener("touchend", touchEnd);
+  track.addEventListener("touchmove", touchMove);
+
+  track.addEventListener("mousedown", touchStart);
+  track.addEventListener("mouseup", touchEnd);
+  track.addEventListener("mouseleave", touchEnd);
+  track.addEventListener("mousemove", touchMove);
+
+  function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+  }
+
+  function touchStart(event) {
+    isDragging = true;
+    startX = getPositionX(event);
+    track.classList.add('dragging');
+    animationId = requestAnimationFrame(animation);
+  }
+
+  function touchMove(event) {
+    if (!isDragging) return;
+    const currentX = getPositionX(event);
+    const currentPosition = prevTranslate + (currentX - startX);
+    currentTranslate = currentPosition;
+  }
+
+  function touchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    cancelAnimationFrame(animationId);
+    track.classList.remove('dragging');
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    // Si arrastró más de 50px, cambia de tarjeta
+    if (movedBy < -50 && currentIndex < cards.length - 1) {
+      currentIndex++;
+    } else if (movedBy > 50 && currentIndex > 0) {
+      currentIndex--;
+    }
+
+    updateCarousel();
+  }
+
+  function animation() {
+    if (isDragging) {
+      track.style.transform = `translateX(${currentTranslate}px)`;
+      requestAnimationFrame(animation);
+    }
+  }
+
+  // 6. Recalcular posición si rota la pantalla o cambia el tamaño (Resize)
   window.addEventListener("resize", updateCarousel);
 });
