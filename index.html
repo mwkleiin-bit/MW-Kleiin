@@ -555,6 +555,194 @@
       .carousel-card { min-width: 220px; }
       .carousel-img-wrap { height: 150px; }
     }
+
+    /* ── MARKETING SECTION ── */
+    #marketing {
+      position: relative;
+      z-index: 1;
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .marketing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .marketing-text .section-label { margin-bottom: 12px; }
+
+    .marketing-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .marketing-text h2 span { color: var(--cyan); }
+
+    .marketing-text p {
+      color: #e0eaf4;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .marketing-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 32px;
+    }
+
+    .marketing-pill {
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.25);
+      color: var(--cyan-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .marketing-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #1a8a3a, #25d460);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(37,212,96,0.25);
+    }
+
+    .marketing-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,212,96,0.4);
+    }
+
+    /* Imagen lado derecho */
+    .marketing-visual {
+      position: relative;
+    }
+
+    .marketing-img-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(56,189,248,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .marketing-img-wrap img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: filter 0.3s;
+    }
+
+    .marketing-img-wrap:hover img { filter: brightness(1); }
+
+    /* Overlay con stat encima de la imagen */
+    .marketing-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(13,27,42,0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .marketing-overlay-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .marketing-overlay-text strong {
+      display: block;
+      color: var(--cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .marketing-overlay-text span {
+      color: #e0eaf4;
+      font-size: 0.78rem;
+    }
+
+    /* Badge flotante */
+    .marketing-badge-float {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--cyan));
+      color: var(--navy);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 1.4;
+      box-shadow: 0 4px 20px rgba(56,189,248,0.35);
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    /* Placeholder si no hay imagen */
+    .marketing-img-placeholder {
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(135deg, #0d1b2a, #112240);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .marketing-img-placeholder .big-icon { font-size: 5rem; }
+    .marketing-img-placeholder p {
+      color: #38bdf8;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      #marketing { padding: 60px 20px; }
+      .marketing-grid { grid-template-columns: 1fr; gap: 40px; }
+      .marketing-img-wrap img { height: 260px; }
+      .marketing-img-placeholder { height: 260px; }
+      .marketing-badge-float { top: -12px; right: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -612,13 +800,64 @@
       </p>
     </div>
 
-    <!-- CARRUSEL -->
+  
+  <!-- MARKETING -->
+  <section id="marketing">
+    <div class="marketing-grid">
+
+      <!-- Texto izquierda -->
+      <div class="marketing-text fade-up">
+        <span class="section-label">// Nuestra diferencia</span>
+        <h2>No solo creamos tu web —<br><span>te ayudamos a vender</span></h2>
+        <p>Una web sin estrategia es solo una página bonita. En <strong style="color:#7dd3fc">Kleiin MW</strong> no te dejamos solo después de entregar el proyecto — te acompañamos para que tus primeros clientes lleguen de verdad.</p>
+        <p>Te enseñamos a usar tu presencia digital, cómo presentar tu negocio, qué decir y cómo atraer consultas reales por WhatsApp desde el día uno.</p>
+
+        <div class="marketing-pills">
+          <span class="marketing-pill">📣 Estrategia de contenido</span>
+          <span class="marketing-pill">📲 Conversión por WhatsApp</span>
+          <span class="marketing-pill">📊 Cómo presentar tu negocio</span>
+          <span class="marketing-pill">🎯 Atracción de clientes</span>
+          <span class="marketing-pill">🤝 Acompañamiento real</span>
+        </div>
+
+        <a href="https://wa.me/543794082942?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20la%20estrategia%20de%20marketing%20de%20Kleiin%20MW" target="_blank" class="marketing-cta">
+          📲 Quiero saber más
+        </a>
+      </div>
+
+      <!-- Visual derecha -->
+      <div class="marketing-visual fade-up">
+        <div class="marketing-badge-float">INCLUIDO<br>EN TU WEB</div>
+        <div class="marketing-img-wrap">
+          <img
+            src="assets/marketing.jpg"
+            alt="Estrategia de marketing"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="marketing-img-placeholder" style="display:none;">
+            <div class="big-icon">📊</div>
+            <p>Estrategia · Marketing · Ventas</p>
+          </div>
+          <div class="marketing-overlay">
+            <div class="marketing-overlay-icon">🚀</div>
+            <div class="marketing-overlay-text">
+              <strong>Más que una web</strong>
+              <span>Estrategia incluida para que vendas desde el día uno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CARRUSEL -->
     <div class="carousel-wrap fade-up">
       <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/restaurante.png" alt="Restaurante" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/restaurante.jpg" alt="Restaurante" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">🍽️</div>
           </div>
           <div class="carousel-info">
@@ -629,7 +868,7 @@
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/gym.png" alt="Gym" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/gym.jpg" alt="Gym" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">💪</div>
           </div>
           <div class="carousel-info">
@@ -640,7 +879,7 @@
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/concesionaria.png" alt="Concesionaria" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/concesionaria.jpg" alt="Concesionaria" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">🚗</div>
           </div>
           <div class="carousel-info">
@@ -651,7 +890,7 @@
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/peluqueria.png" alt="Peluquería" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/peluqueria.jpg" alt="Peluquería" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">✂️</div>
           </div>
           <div class="carousel-info">
@@ -662,7 +901,7 @@
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/empresa.png" alt="Empresa" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/empresa.jpg" alt="Empresa" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">🏢</div>
           </div>
           <div class="carousel-info">
@@ -673,7 +912,7 @@
 
         <div class="carousel-card">
           <div class="carousel-img-wrap">
-            <img src="assets/carousel/tienda.png" alt="Tienda" onerror="this.parentElement.classList.add('no-img')" />
+            <img src="assets/carousel/tienda.jpg" alt="Tienda" onerror="this.parentElement.classList.add('no-img')" />
             <div class="carousel-placeholder">🛍️</div>
           </div>
           <div class="carousel-info">
