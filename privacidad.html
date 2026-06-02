@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Kleiin MW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── HERO BANNER ── */
+    .terms-hero {
+      position: relative;
+      z-index: 1;
+      padding: 140px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid rgba(56,189,248,0.08);
+    }
+
+    .terms-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(circle, rgba(30,111,168,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .terms-badge {
+      display: inline-block;
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.25);
+      color: var(--cyan);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .terms-hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--white) 40%, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .terms-hero p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── NAV ── */
+    .nav-back {
+      background: transparent;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      color: var(--cyan);
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .nav-back:hover {
+      background: var(--cyan);
+      color: var(--navy);
+      box-shadow: var(--glow);
+    }
+
+    /* ── CONTENT ── */
+    .terms-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+
+    .terms-section {
+      margin-bottom: 48px;
+      padding: 36px;
+      background: rgba(17,34,64,0.5);
+      border: 1px solid rgba(56,189,248,0.10);
+      border-radius: 12px;
+      transition: border-color 0.3s;
+    }
+
+    .terms-section:hover { border-color: rgba(56,189,248,0.25); }
+
+    .terms-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .terms-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .terms-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .terms-section p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .terms-section p:last-child { margin-bottom: 0; }
+
+    .terms-section ul {
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    .terms-section ul li {
+      color: var(--gray);
+      font-size: 0.93rem;
+      line-height: 1.8;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .terms-section ul li::before {
+      content: '▸';
+      color: var(--cyan);
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+    }
+
+    .terms-section strong { color: var(--cyan-light); }
+
+    .highlight-box {
+      background: rgba(56,189,248,0.06);
+      border-left: 3px solid var(--cyan);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      color: var(--cyan-light) !important;
+      font-size: 0.9rem !important;
+      margin: 0 !important;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .terms-hero { padding: 120px 20px 48px; }
+      .terms-content { padding: 40px 16px 80px; }
+      .terms-section { padding: 20px 16px; margin-bottom: 20px; }
+      .terms-section h2 { font-size: 0.9rem; }
+      .terms-number { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.jpg" alt="Kleiin MW" />
+      <span>KLEIIN MW</span>
+    </a>
+    <a href="index.html" class="nav-back">← Volver</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="terms-hero">
+    <div class="terms-badge">Documento Legal</div>
+    <h1>Política de Privacidad</h1>
+    <p>Última actualización: Mayo 2025 &nbsp;·&nbsp; Kleiin MW — Corrientes Capital, Argentina</p>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="terms-content">
+
+    <!-- INTRO -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">INTRO</span>
+        <h2>Compromiso con tu Privacidad</h2>
+      </div>
+      <p>En <strong>Kleiin MW — Cybersecurity & Web Development</strong> nos tomamos muy en serio la protección de tus datos personales. Esta Política de Privacidad explica qué información recopilamos, cómo la usamos y cómo la protegemos.</p>
+      <p>Al contratar nuestros servicios o comunicarte con nosotros, aceptás el tratamiento de tus datos conforme a esta política, en cumplimiento de la <strong>Ley N° 25.326 de Protección de Datos Personales</strong> de la República Argentina.</p>
+    </div>
+
+    <!-- 01 QUÉ RECOPILAMOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">01</span>
+        <h2>Datos que Recopilamos</h2>
+      </div>
+      <p>Recopilamos únicamente los datos necesarios para prestarte el servicio contratado. Esto incluye:</p>
+      <ul>
+        <li><strong>Datos de contacto:</strong> nombre completo, número de WhatsApp y dirección</li>
+        <li><strong>Datos del negocio:</strong> nombre comercial, rubro y descripción del proyecto</li>
+        <li><strong>Datos para registro de dominio:</strong> nombre, apellido, dirección, correo electrónico y datos de identidad requeridos por el registrador</li>
+        <li><strong>Comunicaciones:</strong> mensajes e historial de conversaciones por WhatsApp relacionados al servicio</li>
+      </ul>
+      <div class="highlight-box">
+        <p>🔒 No recopilamos datos bancarios, contraseñas ni información sensible más allá de lo estrictamente necesario para el servicio.</p>
+      </div>
+    </div>
+
+    <!-- 02 CÓMO USAMOS LOS DATOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">02</span>
+        <h2>Cómo Usamos tus Datos</h2>
+      </div>
+      <p>Los datos recopilados se utilizan exclusivamente para los siguientes fines:</p>
+      <ul>
+        <li>Prestación y gestión del servicio contratado</li>
+        <li>Registro de dominio web a nombre del cliente cuando corresponda</li>
+        <li>Comunicación sobre el avance, entrega y soporte del proyecto</li>
+        <li>Emisión de presupuestos y seguimiento comercial</li>
+        <li>Cumplimiento de obligaciones legales y contractuales</li>
+      </ul>
+      <p><strong>Kleiin MW no utiliza tus datos con fines publicitarios</strong> ni los comparte con terceros sin tu consentimiento expreso, salvo los casos requeridos por ley.</p>
+    </div>
+
+    <!-- 03 REGISTRO DE DOMINIO -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">03</span>
+        <h2>Datos para Registro de Dominio</h2>
+      </div>
+      <p>Cuando el servicio incluye el registro de un dominio web a nombre del cliente, es necesario compartir ciertos datos con el <strong>registrador de dominios</strong> (plataforma externa). En estos casos:</p>
+      <ul>
+        <li>Los datos se utilizan exclusivamente para completar el registro a tu nombre</li>
+        <li>Kleiin MW actúa como intermediario técnico y no retiene copias innecesarias</li>
+        <li>El cliente es el titular legal del dominio registrado</li>
+        <li>Los datos quedan sujetos también a la política de privacidad del registrador correspondiente</li>
+      </ul>
+      <div class="highlight-box">
+        <p>🌐 El dominio siempre queda registrado a nombre del cliente, nunca a nombre de Kleiin MW.</p>
+      </div>
+    </div>
+
+    <!-- 04 ALMACENAMIENTO -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">04</span>
+        <h2>Almacenamiento y Seguridad</h2>
+      </div>
+      <p>Tus datos se almacenan de forma segura y con acceso restringido. Kleiin MW aplica medidas razonables para proteger la información contra accesos no autorizados, pérdida o alteración.</p>
+      <ul>
+        <li>Los datos de contacto se conservan mientras dure la relación comercial</li>
+        <li>Una vez finalizado el servicio, los datos se conservan por un período mínimo de 1 año por razones legales y de soporte</li>
+        <li>Podés solicitar la eliminación de tus datos en cualquier momento</li>
+      </ul>
+      <div class="highlight-box">
+        <p>⚠️ Dada la naturaleza del servicio de comunicación vía WhatsApp, los mensajes también están sujetos a las políticas de privacidad de WhatsApp / Meta.</p>
+      </div>
+    </div>
+
+    <!-- 05 TUS DERECHOS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">05</span>
+        <h2>Tus Derechos sobre tus Datos</h2>
+      </div>
+      <p>De acuerdo con la <strong>Ley N° 25.326</strong>, tenés derecho a:</p>
+      <ul>
+        <li><strong>Acceso:</strong> conocer qué datos tuyos tenemos almacenados</li>
+        <li><strong>Rectificación:</strong> corregir datos incorrectos o desactualizados</li>
+        <li><strong>Eliminación:</strong> solicitar la baja de tus datos de nuestros registros</li>
+        <li><strong>Oposición:</strong> oponerte al uso de tus datos para fines específicos</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, contactanos directamente por WhatsApp al <strong>+54 3794082942</strong>.</p>
+    </div>
+
+    <!-- 06 TERCEROS -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">06</span>
+        <h2>Servicios de Terceros</h2>
+      </div>
+      <p>Kleiin MW puede utilizar plataformas de terceros en la prestación de sus servicios. Cada una tiene sus propias políticas de privacidad:</p>
+      <ul>
+        <li><strong>WhatsApp / Meta:</strong> canal principal de comunicación y atención</li>
+        <li><strong>GitHub Pages:</strong> plataforma de publicación de sitios web</strong></li>
+        <li><strong>Registradores de dominios:</strong> para el registro de dominios a nombre del cliente</li>
+      </ul>
+      <p>Kleiin MW no se responsabiliza por el tratamiento de datos realizado por estas plataformas externas.</p>
+    </div>
+
+    <!-- 07 MODIFICACIONES -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">07</span>
+        <h2>Modificaciones a esta Política</h2>
+      </div>
+      <p>Kleiin MW se reserva el derecho de actualizar esta Política de Privacidad cuando sea necesario. Los cambios serán publicados en esta página con la fecha de actualización correspondiente.</p>
+      <p>Te recomendamos revisarla periódicamente. El uso continuado de nuestros servicios implica la aceptación de los cambios.</p>
+    </div>
+
+    <!-- 08 CONTACTO -->
+    <div class="terms-section">
+      <div class="terms-section-header">
+        <span class="terms-number">08</span>
+        <h2>Contacto sobre Privacidad</h2>
+      </div>
+      <p>Si tenés consultas, dudas o solicitudes relacionadas con el tratamiento de tus datos personales, podés contactarnos directamente:</p>
+      <div class="highlight-box">
+        <p>📲 WhatsApp: <strong>+54 3794082942</strong> — Kleiin MW · Corrientes Capital, Argentina</p>
+      </div>
+      <p>Nos comprometemos a responder tu consulta en un plazo máximo de 72 horas hábiles.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>KLEIIN MW</strong> · Cybersecurity & Web Development · Corrientes Capital</p>
+    <p style="margin-top:10px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+      <a href="terminos.html">Términos y Condiciones</a>
+      <a href="privacidad.html">Política de Privacidad</a>
+    </p>
+  </footer>
+
+</body>
+</html>
