@@ -693,7 +693,6 @@ section {
 }
 
 /* ── PROYECTOS ENTREGADOS ── */
-/* ── PROYECTOS ENTREGADOS ── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -751,52 +750,96 @@ section {
   font-family: monospace;
 }
 
-/* Reemplazo de iframe por enlace de imagen */
-.project-img-link {
-  display: block;
+.project-iframe-wrap {
   width: 100%;
   height: 220px;
-  position: relative;
   overflow: hidden;
-  background: rgba(13,27,42,0.8);
-  text-decoration: none;
+  position: relative;
+  background: #0d1b2a;
 }
 
-.project-img-preview {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  transition: transform 0.4s ease;
+.project-iframe-wrap iframe {
+  width: 200%;
+  height: 200%;
+  border: none;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
 }
 
-.project-card:hover .project-img-preview {
-  transform: scale(1.04);
-}
-
-.project-placeholder {
+.project-iframe-wrap::after {
+  content: '';
   position: absolute;
   inset: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-info {
+  padding: 20px 24px 24px;
+}
+
+.project-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 52px;
-  background: linear-gradient(135deg, rgba(17,34,64,0.9), rgba(13,27,42,0.95));
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-/* Muestra un placeholder si la imagen falla o no se encuentra */
-.project-img-link.no-img .project-img-preview {
-  display: none;
+.project-status {
+  color: #25d460;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.project-img-link.no-img .project-placeholder {
-  opacity: 1;
+.project-type {
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.2);
+  color: var(--cyan);
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
 }
 
+.project-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  color: var(--gray);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--blue-mid), var(--cyan));
+  color: var(--navy);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-top: 6px;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56,189,248,0.35);
+}
 
 /* ── QUIENES SOMOS ── */
 .about-grid {
@@ -1025,4 +1068,4 @@ footer a:hover { opacity: 0.7; }
 /* Y cambialo a esto */
 @media (max-width: 1024px) {
   .projects-grid { grid-template-columns: 1fr; }
-}
+   }
